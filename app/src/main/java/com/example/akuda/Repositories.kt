@@ -1,5 +1,9 @@
 package com.example.akuda
 
-object Repositories {
+import com.example.akuda.model.auth.FirebaseAuthRepository
 
+object Repositories {
+    val firebaseAuthRepository: FirebaseAuthRepository by lazy {
+        FirebaseAuthRepository.getInstance()
+    }
 }
