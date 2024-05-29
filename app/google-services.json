@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "436430381357",
+    "project_id": "akuda-56958",
+    "storage_bucket": "akuda-56958.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:436430381357:android:a635d217f3c687a2f433a4",
+        "android_client_info": {
+          "package_name": "com.android.application"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhSLA6IEkXIs30yxYQM3_kb6nJaQjvS1s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
