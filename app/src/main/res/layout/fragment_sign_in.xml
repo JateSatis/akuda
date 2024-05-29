@@ -4,27 +4,118 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.akuda.screens.sign_in.SignInFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_blue">
 
     <TextView
-        android:id="@+id/signInTitle"
+        android:id="@+id/signUpTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign in"
+        android:text="Войти в аккаунт"
+        android:textColor="@color/white"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="150dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/signInSubtitle"
+        android:id="@+id/signUpSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Log in into existing account"
+        android:text="Пожалуйста войдите в существующий аккаунт"
+        android:textColor="@color/background_dark_gray"
+        android:layout_marginTop="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/signInTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/signUpTitle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/signing_background"
+        android:layout_marginTop="50dp"
+        android:padding="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpSubtitle">
+
+        <TextView
+            android:id="@+id/signUpEmailLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Почта"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/signUpEmailInput"
+            style="@style/CustomEditTextStyle"
+            android:hint="Почта"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signUpEmailLable" />
+
+        <TextView
+            android:id="@+id/signUpPasswordLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Пароль"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signUpEmailInput" />
+
+        <EditText
+            android:id="@+id/signUpPasswordInput"
+            style="@style/CustomEditTextStyle"
+            android:drawableRight="@drawable/ic_show_password"
+            android:layout_marginTop="10dp"
+            android:hint="Пароль"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signUpPasswordLable"
+            tools:layout_editor_absoluteY="20dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signInButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/log_in_button_background"
+            android:text="Зайти в аккаунт"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signUpPasswordInput" />
+
+        <TextView
+            android:id="@+id/noAccountText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="У вас нет аккаунта?"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/noAccountClickableText"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
+
+        <TextView
+            android:id="@+id/noAccountClickableText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Регистрация"
+            android:textSize="16sp"
+            android:textColor="@color/orange"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/noAccountText"
+            app:layout_constraintTop_toTopOf="@+id/noAccountText" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

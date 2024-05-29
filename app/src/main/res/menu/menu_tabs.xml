@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/timer_menu_tab" android:icon="@drawable/ic_home_tab"
+        android:title="Публикации" />
+    <item android:id="@+id/chatrooms_menu_tab" android:icon="@drawable/ic_account_tab"
+        android:title="Аккаунт"/>
+</menu>

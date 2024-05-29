@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
+import com.example.akuda.R
 import com.example.akuda.databinding.FragmentSignUpBinding
 
 class SignUpFragment : Fragment() {
@@ -15,8 +17,16 @@ class SignUpFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentSignUpBinding.inflate(inflater, container, false)
+
+        binding.signUpGoBackButton.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
+        binding.signUpButton.setOnClickListener {
+            findNavController().navigate(R.id.action_signUpFragment_to_tabsFragment)
+        }
 
         return binding.root;
     }

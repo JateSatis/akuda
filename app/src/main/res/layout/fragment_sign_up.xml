@@ -2,21 +2,150 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.akuda.screens.sign_up.SignUpFragment"
+    tools:context="com.example.akuda.screens.sign_in.SignInFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_blue">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/signUpGoBackButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/edit_text_background"
+        android:gravity="center_horizontal"
+        android:src="@drawable/ic_go_back"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/signUpTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sign up"
+        android:text="Зарегистрироваться"
+        android:textColor="@color/white"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@id/signUpGoBackButton" />
 
+    <TextView
+        android:id="@+id/signUpSubtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Пожалуйста создайте учетную запись"
+        android:textColor="@color/background_dark_gray"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpTitle" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="@drawable/signing_background"
+        android:layout_marginTop="30dp"
+        android:paddingHorizontal="20sp"
+        android:paddingTop="20dp"
+        android:paddingBottom="10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUpSubtitle">
+
+        <TextView
+            android:id="@+id/signUpNameLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Имя"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/signUpNameInput"
+            style="@style/CustomEditTextStyle"
+            android:hint="Введите имя"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signUpNameLable" />
+
+        <TextView
+            android:id="@+id/signUpEmailLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Почта"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signUpNameInput" />
+
+        <EditText
+            android:id="@+id/signUpEmailInput"
+            style="@style/CustomEditTextStyle"
+            android:hint="Введите почту"
+            android:layout_marginTop="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signUpEmailLable" />
+
+        <TextView
+            android:id="@+id/signUpPasswordLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Пароль"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signUpEmailInput" />
+
+        <EditText
+            android:id="@+id/signUpPasswordInput"
+            style="@style/CustomEditTextStyle"
+            android:drawableRight="@drawable/ic_show_password"
+            android:layout_marginTop="10dp"
+            android:hint="Введите пароль"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signUpPasswordLable"
+            tools:layout_editor_absoluteY="20dp" />
+
+        <TextView
+            android:id="@+id/signUpRePasswordLable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Повторите пароль"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signUpPasswordInput" />
+
+        <EditText
+            android:id="@+id/signUpRePasswordInput"
+            style="@style/CustomEditTextStyle"
+            android:drawableRight="@drawable/ic_show_password"
+            android:layout_marginTop="10dp"
+            android:hint="Повторите пароль"
+            android:inputType="textPassword"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/signUpRePasswordLable"
+            tools:layout_editor_absoluteY="20dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/signUpButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@drawable/log_in_button_background"
+            android:text="Зарегистрироваться"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/signUpRePasswordInput" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
