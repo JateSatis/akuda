@@ -1,6 +1,12 @@
 package com.example.akuda.model.posts
 
 data class Post (
-    val id: String,
-    val data: PostFirestore
+    var id: String = "",
+    val author: String,
+    val city: String,
+    val contents: String,
+    val image: String,
+    val liked: List<String>,
+    val rating: List<Double>,
+    val title: String
 )
