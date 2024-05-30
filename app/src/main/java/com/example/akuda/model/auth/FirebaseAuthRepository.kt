@@ -23,6 +23,8 @@ class FirebaseAuthRepository {
         return auth.signInWithEmailAndPassword(email, password).await()
     }
 
+    fun isSignedIn() = auth.currentUser != null
+
     fun signOut() {
         auth.signOut()
     }
