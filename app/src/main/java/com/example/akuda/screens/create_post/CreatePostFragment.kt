@@ -49,13 +49,13 @@ class CreatePostFragment : Fragment() {
 
     private fun openGalleryForAccountPhoto() {
         val intent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(intent, CreatePostFragment.PICK_POST_IMAGE_REQUEST)
+        startActivityForResult(intent, PICK_POST_IMAGE_REQUEST)
     }
 
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == CreatePostFragment.PICK_POST_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
+        if (requestCode == PICK_POST_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             val imageUri = data.data
             Glide.with(this@CreatePostFragment)
                 .load(imageUri)

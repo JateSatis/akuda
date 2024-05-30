@@ -8,17 +8,18 @@ import com.example.akuda.model.posts.Post
 import kotlinx.coroutines.launch
 
 class HomeViewModel(
-    val postsRepository: FirebasePostsRepository
+    private val postsRepository: FirebasePostsRepository
 ) : ViewModel() {
 
     private val _posts = MutableLiveData<List<Post>>()
     val posts = _posts
 
-    fun fetchAllPosts() {
+    init {
         viewModelScope.launch {
             _posts.value = postsRepository.fetchAllPosts()
         }
     }
+
 
     fun fetchPostsByCity(city: String) {
         viewModelScope.launch {

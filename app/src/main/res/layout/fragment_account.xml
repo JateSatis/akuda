@@ -20,8 +20,6 @@
         app:layout_constraintTop_toBottomOf="@+id/accountImage" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:visibility="gone"
-        tools:visibility="visible"
         android:id="@+id/accountSaveChangesButton"
         android:layout_width="200dp"
         android:layout_height="50dp"
@@ -75,7 +73,7 @@
         app:tabIndicatorColor="@color/orange"
         app:tabSelectedTextColor="@color/orange"
         android:background="@color/background_blue"
-        app:layout_constraintTop_toBottomOf="@+id/accountSaveChangesButton"
+        app:layout_constraintTop_toBottomOf="@+id/logOutButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

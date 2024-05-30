@@ -8,11 +8,11 @@ import kotlinx.coroutines.tasks.await
 class FirebaseAccountRepository {
 
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private val userId = FirebaseAuth.getInstance().currentUser!!.uid
+    private val userId = FirebaseAuth.getInstance().currentUser?.uid
 
     suspend fun fetchAccountInfo() : Account? {
         return try {
-            val documentSnapshot = db.collection("users").document(userId).get().await()
+            val documentSnapshot = db.collection("users").document(userId!!).get().await()
             if (documentSnapshot.exists()) {
                 val account = documentSnapshot.toObject(Account::class.java)
                 account
@@ -27,7 +27,7 @@ class FirebaseAccountRepository {
 
     suspend fun saveAccountPhoto(photo: String): Boolean {
         return try {
-            db.collection("users").document(userId).update("photo", photo).await()
+            db.collection("users").document(userId!!).update("photo", photo).await()
             true
         } catch (e: Exception) {
             e.printStackTrace()
@@ -37,7 +37,7 @@ class FirebaseAccountRepository {
 
     suspend fun saveAccountNickname(nickname: String) : Boolean {
         return try {
-            db.collection("users").document(userId).update("nickname", nickname).await()
+            db.collection("users").document(userId!!).update("nickname", nickname).await()
             true
         } catch (e: Exception) {
             e.printStackTrace()

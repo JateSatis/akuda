@@ -1,6 +1,7 @@
 package com.example.akuda.screens.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -41,7 +42,9 @@ class HomeFragment : Fragment() {
             return@setOnEditorActionListener false
         }
 
-        homeViewModel.fetchAllPosts()
+        homeViewModel.posts.observe(viewLifecycleOwner) {
+            adapter.posts = it
+        }
 
         return binding.root
     }

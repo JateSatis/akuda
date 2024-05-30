@@ -1,5 +1,6 @@
 package com.example.akuda.model.posts
 
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
@@ -8,7 +9,7 @@ import kotlinx.coroutines.tasks.await
 class FirebasePostsRepository {
 
     private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
-    private val userId = FirebaseAuth.getInstance().currentUser!!.uid
+    private val userId = FirebaseAuth.getInstance().currentUser?.uid
 
     suspend fun fetchAllPosts() : List<Post>? {
         return try {
@@ -53,7 +54,7 @@ class FirebasePostsRepository {
             city = city,
             title = title,
             contents = contents,
-            author = userId,
+            author = userId!!,
             liked = emptyList(),
             rating = emptyList(),
             image = imageUri

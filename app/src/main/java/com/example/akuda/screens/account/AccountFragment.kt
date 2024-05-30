@@ -5,10 +5,13 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
@@ -42,11 +45,6 @@ class AccountFragment : Fragment() {
             .load(R.mipmap.account_default)
             .circleCrop()
             .into(binding.accountImage)
-
-        binding.accountEditNickname.setOnEditorActionListener { _, _, _ ->
-            binding.accountSaveChangesButton.visibility = View.VISIBLE
-            return@setOnEditorActionListener true
-        }
 
         accountViewModel.fetchAccountInfo()
 
