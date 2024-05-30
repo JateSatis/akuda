@@ -40,7 +40,7 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostHolder>() {
 
         Glide
             .with(holder.itemView)
-            .load(post.images[0])
+            .load(post.image)
             .transform(RoundedCorners(20))
             .into(binging.postImage)
     }

@@ -48,14 +48,15 @@ class FirebasePostsRepository {
         }
     }
 
-    suspend fun addPost(city: String, title: String, contents: String) {
+    suspend fun addPost(city: String, title: String, contents: String, imageUri: String) {
         val postFirestore = PostFirestore(
             city = city,
             title = title,
             contents = contents,
             author = userId,
             liked = emptyList(),
-            rating = emptyList()
+            rating = emptyList(),
+            image = imageUri
         )
         try {
             db.collection("posts").add(postFirestore).await()
