@@ -17,7 +17,7 @@ class SignInFragment : Fragment() {
 
     private lateinit var binding: FragmentSignInBinding
 
-    private var viewModel = SignInViewModel(Repositories.firebaseAuthRepository)
+    private val viewModel = SignInViewModel(Repositories.firebaseAuthRepository)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,6 +53,13 @@ class SignInFragment : Fragment() {
         }
 
         return binding.root;
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if (viewModel.isSignedIn()) {
+            findNavController().navigate(R.id.action_signInFragment_to_tabsFragment)
+        }
     }
 
     private fun updatePending() {

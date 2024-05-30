@@ -14,6 +14,8 @@ class SignInViewModel(private val authRepository: FirebaseAuthRepository) : View
     val operationState: LiveData<OperationState>
         get() = _operationState
 
+    fun isSignedIn() = authRepository.isSignedIn()
+
 
     fun signIn(email: String, password: String) {
         viewModelScope.launch {
