@@ -4,7 +4,6 @@ import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.provider.ContactsContract.CommonDataKinds.Nickname
 import android.provider.MediaStore
 import android.view.LayoutInflater
 import android.view.View
@@ -14,10 +13,14 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.example.akuda.Repositories
 import com.example.akuda.databinding.FragmentAccountBinding
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
+
 
 class AccountFragment : Fragment() {
 
     private lateinit var binding: FragmentAccountBinding
+    private lateinit var pagerAdapter: PostsPagerAdapter
 
     private var accountViewModel = AccountViewModel(Repositories.firebaseAccountRepository)
 
@@ -38,6 +41,17 @@ class AccountFragment : Fragment() {
                 .circleCrop()
                 .into(binding.accountImage)
         }
+        pagerAdapter = PostsPagerAdapter(this)
+        binding.viewPager.adapter = pagerAdapter
+
+        TabLayoutMediator(
+            binding.tabLayout, binding.viewPager
+        ) { tab: TabLayout.Tab, position: Int ->
+            when (position) {
+                0 -> tab.text = "Мои публикации"
+                1 -> tab.text = "Понравившиеся публикации"
+            }
+        }.attach()
 
         binding.accountEditNickname.setOnEditorActionListener { nicknameView, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {

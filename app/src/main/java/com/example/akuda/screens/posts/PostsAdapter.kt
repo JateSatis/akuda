@@ -29,7 +29,7 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostHolder>() {
 
     override fun onBindViewHolder(holder: PostHolder, position: Int) {
         val binging = holder.binding
-        val post = posts[position].data
+        val post = posts[position]
 
         binging.apply {
             postTitle.text = post.title

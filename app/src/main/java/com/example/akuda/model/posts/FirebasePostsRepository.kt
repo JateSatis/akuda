@@ -15,8 +15,8 @@ class FirebasePostsRepository {
             val postsSnapshot = db.collection("posts").get().await()
             if (!postsSnapshot.isEmpty) {
                 postsSnapshot.map {
-                    val postFirestore = it.toObject(PostFirestore::class.java)
-                    return@map Post(id = it.id, data = postFirestore)
+                    val post = it.toObject(Post::class.java)
+                    post.copy(id = it.id)
                 }
             } else {
                 null
@@ -30,26 +30,26 @@ class FirebasePostsRepository {
     suspend fun fetchPostsByCity(city: String) : List<Post>? {
         val posts = fetchAllPosts()
         return posts?.filter {
-            it.data.city == city
+            it.city == city
         }
     }
 
     suspend fun fetchMyPosts() : List<Post>? {
         val posts = fetchAllPosts()
         return posts?.filter {
-            it.data.author == userId
+            it.author == userId
         }
     }
 
     suspend fun fetchLikedPosts() : List<Post>? {
         val posts = fetchAllPosts()
         return posts?.filter {
-            it.data.liked.contains(userId)
+            it.liked.contains(userId)
         }
     }
 
     suspend fun addPost(city: String, title: String, contents: String, imageUri: String) {
-        val postFirestore = PostFirestore(
+        val post = Post(
             city = city,
             title = title,
             contents = contents,
@@ -59,7 +59,9 @@ class FirebasePostsRepository {
             image = imageUri
         )
         try {
-            db.collection("posts").add(postFirestore).await()
+            val documentReference = db.collection("posts").add(post).await()
+            val documentId = documentReference.id
+            db.collection("posts").document(documentId).update("id", documentId).await()
         } catch (e: Exception) {
             e.printStackTrace()
         }

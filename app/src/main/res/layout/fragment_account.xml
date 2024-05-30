@@ -54,23 +54,23 @@
         tools:text="JateSatis@gmail.com" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/publicationsTableLayout"
+        android:id="@+id/tabLayout"
         android:layout_width="0dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="20dp"
-        app:layout_constraintEnd_toEndOf="@+id/accountEmailText"
-        app:layout_constraintStart_toStartOf="@+id/accountImage"
-        app:layout_constraintTop_toBottomOf="@id/accountSaveChangesButton" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:tabIndicatorColor="@color/orange"
+        app:tabSelectedTextColor="@color/orange"
+        app:layout_constraintTop_toBottomOf="@+id/accountImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/publicationsViewPager"
+        android:id="@+id/viewPager"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/accountEditNickname"
-        app:layout_constraintStart_toStartOf="@+id/accountImage"
-        app:layout_constraintTop_toBottomOf="@+id/publicationsTableLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/tabLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
