@@ -103,7 +103,7 @@
             app:layout_constraintEnd_toStartOf="@+id/noAccountClickableText"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/signUpButton" />
+            app:layout_constraintTop_toBottomOf="@id/signInButton" />
 
         <TextView
             android:id="@+id/noAccountClickableText"
@@ -118,4 +118,14 @@
             app:layout_constraintTop_toTopOf="@+id/noAccountText" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ProgressBar
+        android:visibility="gone"
+        android:id="@+id/signInProgressBar"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
