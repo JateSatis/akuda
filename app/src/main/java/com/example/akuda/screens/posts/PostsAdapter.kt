@@ -1,6 +1,7 @@
 package com.example.akuda.screens.posts
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostHolder>() {
     var posts = emptyList<Post>()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
+            Log.d("RRRR", value.toString())
             field = value
             notifyDataSetChanged()
         }
@@ -28,10 +30,12 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostHolder>() {
     }
 
     override fun onBindViewHolder(holder: PostHolder, position: Int) {
-        val binging = holder.binding
+        //val binging = holder.binding
         val post = posts[position]
 
-        binging.apply {
+        Log.d("RRRR", post.toString())
+
+        with(holder.binding) {
             postTitle.text = post.title
             postAuthor.text = post.author
             postCity.text = post.city
@@ -42,7 +46,20 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostHolder>() {
             .with(holder.itemView)
             .load(post.image)
             .transform(RoundedCorners(20))
-            .into(binging.postImage)
+            .into(holder.binding.postImage)
+
+        /*binging.apply {
+            postTitle.text = post.title
+            postAuthor.text = post.author
+            postCity.text = post.city
+            postRating.text = (post.rating.sum() / post.rating.size).toString()
+        }
+
+        Glide
+            .with(holder.itemView)
+            .load(post.image)
+            .transform(RoundedCorners(20))
+            .into(binging.postImage)*/
     }
 
     override fun getItemCount(): Int = posts.size

@@ -19,6 +19,8 @@ class HomeFragment : Fragment() {
 
     private val homeViewModel = HomeViewModel(Repositories.firebasePostsRepository)
 
+    private val postsAdapter: PostsAdapter = PostsAdapter()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,13 +28,7 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val adapter = PostsAdapter()
-        val layoutManager = LinearLayoutManager(requireContext().applicationContext)
-
-        binding.homePostsContainer.apply {
-            this.adapter = adapter
-            this.layoutManager = layoutManager
-        }
+        setupHomePostsRecyclerView()
 
         binding.searchPostsEditText.setOnEditorActionListener { searchView, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_DONE) {
@@ -42,11 +38,21 @@ class HomeFragment : Fragment() {
             return@setOnEditorActionListener false
         }
 
-        homeViewModel.posts.observe(viewLifecycleOwner) {
-            adapter.posts = it
+        homeViewModel.posts.observe(viewLifecycleOwner) { posts ->
+            //Log.d("RRRR", it.toString())
+            posts?.let { postsAdapter.posts = it }
         }
 
         return binding.root
+    }
+
+    private fun setupHomePostsRecyclerView() {
+        val layoutManager = LinearLayoutManager(context)
+
+        binding.homePostsContainer.apply {
+            this.adapter = postsAdapter
+            this.layoutManager = layoutManager
+        }
     }
 
 }
