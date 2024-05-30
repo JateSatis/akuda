@@ -22,6 +22,8 @@ class AccountFragment : Fragment() {
     ): View {
         binding = FragmentAccountBinding.inflate(inflater, container, false)
 
+        
+
         return binding.root
     }
 

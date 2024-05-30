@@ -6,17 +6,62 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/accountTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Account"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/accountGoBackButton"
+        style="@style/GoBackButton"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/accountImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountGoBackButton" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/accountEditNickname"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Введите свое имя"
+        android:paddingHorizontal="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/accountImage"
+        app:layout_constraintTop_toTopOf="@+id/accountImage" />
+
+    <TextView
+        android:id="@+id/accountEmailText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/accountImage"
+        app:layout_constraintEnd_toEndOf="@+id/accountEditNickname"
+        app:layout_constraintStart_toStartOf="@+id/accountEditNickname"
+        app:layout_constraintTop_toBottomOf="@+id/accountEditNickname"
+        tools:text="JateSatis@gmail.com" />
+
+    <TableLayout
+        android:id="@+id/publicationsTableLayout"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/accountEmailText"
+        app:layout_constraintStart_toStartOf="@+id/accountImage"
+        app:layout_constraintTop_toBottomOf="@id/accountImage" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/publicationsViewPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/accountEditNickname"
+        app:layout_constraintStart_toStartOf="@+id/accountImage"
+        app:layout_constraintTop_toBottomOf="@+id/publicationsTableLayout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

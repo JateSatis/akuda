@@ -20,4 +20,13 @@
     <style name="WhiteProgressBar" parent="Widget.AppCompat.ProgressBar">
         <item name="android:progressTint">@android:color/white</item>
     </style>
+
+    <style name="GoBackButton" parent="Widget.AppCompat.Button">
+        <item name="android:background">@drawable/go_back_button_background</item>
+        <item name="android:src">@drawable/ic_go_back</item>
+        <item name="android:layout_width">50dp</item>
+        <item name="android:layout_height">50dp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginLeft">20dp</item>
+    </style>
 </resources>
