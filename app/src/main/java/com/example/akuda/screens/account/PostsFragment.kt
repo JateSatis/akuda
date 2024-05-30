@@ -5,12 +5,17 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.akuda.R
 import com.example.akuda.Repositories
 import com.example.akuda.databinding.FragmentPostsBinding
+import com.example.akuda.screens.post_details.PostDetailsFragment
 import com.example.akuda.screens.posts.PostsAdapter
+import com.example.akuda.screens.posts.PostsListener
 
 
 class PostsFragment : Fragment() {
@@ -23,7 +28,15 @@ class PostsFragment : Fragment() {
         arguments?.getInt(ARG_TYPE) ?: 0
     }
 
-    private val postsAdapter: PostsAdapter = PostsAdapter()
+    private val postsAdapter: PostsAdapter = PostsAdapter(
+        object : PostsListener {
+            override fun onPostClick(postId: String) {
+                val navController = activity?.findNavController(R.id.mainGraphContainer)
+                navController?.navigate(R.id.postDetailsFragment, bundleOf(PostDetailsFragment.POST_ID to postId))
+            }
+
+        }
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +47,7 @@ class PostsFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentPostsBinding.inflate(inflater, container, false)
 
         observePosts()

@@ -6,12 +6,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.akuda.R
 import com.example.akuda.Repositories
 import com.example.akuda.databinding.FragmentHomeBinding
+import com.example.akuda.screens.post_details.PostDetailsFragment
 import com.example.akuda.screens.posts.PostsAdapter
+import com.example.akuda.screens.posts.PostsListener
 
 class HomeFragment : Fragment() {
 
@@ -26,7 +30,15 @@ class HomeFragment : Fragment() {
     ): View {
         binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val adapter = PostsAdapter()
+        val adapter = PostsAdapter(
+            object : PostsListener {
+                override fun onPostClick(postId: String) {
+                    val navController = activity?.findNavController(R.id.mainGraphContainer)
+                    navController?.navigate(R.id.postDetailsFragment, bundleOf(PostDetailsFragment.POST_ID to postId))
+                }
+
+            }
+        )
         val layoutManager = LinearLayoutManager(requireContext().applicationContext)
 
         binding.homePostsContainer.apply {

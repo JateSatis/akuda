@@ -2,21 +2,107 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.akuda.screens.publication.PostDetailsFragment"
+    tools:context="com.example.akuda.screens.post_details.PostDetailsFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_blue">
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/postDetailsGoBackButton"
+        style="@style/GoBackButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/postDetailsLikeButton"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="20dp"
+        android:src="@drawable/ic_like"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        tools:src="@drawable/ic_show_password"
+        android:id="@+id/postDetailsImage"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/publicationTitle"
+        android:id="@+id/postDetailsTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Publication"
-        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="20dp"
+        android:text="TextView"
+        android:textSize="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/postDetailsImage" />
+
+    <TextView
+        android:id="@+id/postDetailsAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        android:layout_marginTop="10dp"
+        android:textColor="@color/background_dark_gray"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/postDetailsTitle"
+        app:layout_constraintTop_toBottomOf="@+id/postDetailsTitle" />
+
+    <ImageView
+        android:id="@+id/postDetailsCityIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/ic_city"
+        android:layout_marginTop="20dp"
+        app:layout_constraintStart_toStartOf="@+id/postDetailsAuthor"
+        app:layout_constraintTop_toBottomOf="@+id/postDetailsAuthor" />
+
+    <TextView
+        android:id="@+id/postDetailsCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/postDetailsCityIcon"
+        app:layout_constraintStart_toEndOf="@id/postDetailsCityIcon"
+        app:layout_constraintTop_toTopOf="@+id/postDetailsCityIcon"
+        tools:text="Город" />
+
+    <ImageView
+        android:id="@+id/postDetailsRatingIcon"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="20dp"
+        android:src="@drawable/ic_rating"
+        app:layout_constraintStart_toEndOf="@id/postDetailsCity"
+        app:layout_constraintTop_toTopOf="@+id/postDetailsCityIcon" />
+
+    <TextView
+        android:id="@+id/postDetailsRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintBottom_toBottomOf="@+id/postDetailsRatingIcon"
+        app:layout_constraintStart_toEndOf="@id/postDetailsRatingIcon"
+        app:layout_constraintTop_toTopOf="@+id/postDetailsRatingIcon"
+        tools:text="Рейтинг" />
+
+    <TextView
+        android:id="@+id/postDetailsContents"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintTop_toBottomOf="@+id/postDetailsCityIcon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

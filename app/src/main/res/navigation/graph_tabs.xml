@@ -12,9 +12,6 @@
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
-            android:id="@+id/action_homeFragment_to_publicationFragment"
-            app:destination="@id/publicationFragment" />
-        <action
             android:id="@+id/action_homeFragment_to_accountFragment"
             app:destination="@id/accountFragment" />
         <action
@@ -26,11 +23,6 @@
         android:name="com.example.akuda.screens.account.AccountFragment"
         android:label="fragment_account"
         tools:layout="@layout/fragment_account" />
-    <fragment
-        android:id="@+id/publicationFragment"
-        android:name="com.example.akuda.screens.publication.PostDetailsFragment"
-        android:label="fragment_publication"
-        tools:layout="@layout/fragment_post_details" />
     <fragment
         android:id="@+id/createPostFragment"
         android:name="com.example.akuda.screens.create_post.CreatePostFragment"

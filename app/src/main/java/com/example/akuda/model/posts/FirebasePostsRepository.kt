@@ -4,6 +4,7 @@ import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.toObject
 import kotlinx.coroutines.tasks.await
 
 class FirebasePostsRepository {
@@ -19,6 +20,21 @@ class FirebasePostsRepository {
                     val post = it.toObject(Post::class.java)
                     post.copy(id = it.id)
                 }
+            } else {
+                null
+            }
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
+    }
+
+    suspend fun fetchPostById(postId: String) : Post? {
+        return try {
+            val postSnapshot = db.collection("posts").document(postId).get().await()
+            if (postSnapshot.exists()) {
+                val post = postSnapshot.toObject(Post::class.java)
+                post?.copy(id = postSnapshot.id)
             } else {
                 null
             }

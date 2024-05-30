@@ -9,7 +9,13 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.akuda.databinding.ItemPostBinding
 import com.example.akuda.model.posts.Post
 
-class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostHolder>() {
+interface PostsListener {
+    fun onPostClick(postId: String)
+}
+
+class PostsAdapter(
+    private val postsListener: PostsListener
+) : RecyclerView.Adapter<PostsAdapter.PostHolder>() {
 
     var posts = emptyList<Post>()
         @SuppressLint("NotifyDataSetChanged")
@@ -30,6 +36,10 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostHolder>() {
     override fun onBindViewHolder(holder: PostHolder, position: Int) {
         val binging = holder.binding
         val post = posts[position]
+
+        holder.binding.root.setOnClickListener {
+            postsListener.onPostClick(post.id)
+        }
 
         binging.apply {
             postTitle.text = post.title
