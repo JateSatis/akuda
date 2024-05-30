@@ -4,36 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    tools:context="com.example.akuda.screens.create_post.CreatePostFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@color/background_blue">
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/postDetailsGoBackButton"
-            style="@style/GoBackButton"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/createPostTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Зарегистрироваться"
+            android:layout_marginTop="50dp"
+            android:text="Создать публикацию"
             android:textColor="@color/white"
             android:textSize="30sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/postDetailsGoBackButton" />
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/signing_background"
             android:paddingHorizontal="20sp"
@@ -46,9 +41,22 @@
                 android:id="@+id/postDetailsPhoto"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
+                android:src="@mipmap/city_landscape_default"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@+id/postDetailsEditPhotoButton"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="20dp"
+                android:src="@drawable/ic_edit_photo"
+                android:background="@drawable/edit_photo_button_background"
+                app:layout_constraintBottom_toBottomOf="@+id/postDetailsPhoto"
+                app:layout_constraintEnd_toEndOf="@+id/postDetailsPhoto" />
 
             <TextView
                 android:id="@+id/postDetailsTitleLable"
@@ -70,7 +78,7 @@
                 app:layout_constraintTop_toBottomOf="@id/postDetailsTitleLable" />
 
             <TextView
-                android:id="@+id/postDetailsСityLabel"
+                android:id="@+id/postDetailsCityLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
@@ -86,7 +94,7 @@
                 android:hint="Введите город"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/postDetailsСityLabel" />
+                app:layout_constraintTop_toBottomOf="@id/postDetailsCityLabel" />
 
             <TextView
                 android:id="@+id/postDetailsContentsLabel"
@@ -103,19 +111,18 @@
                 style="@style/CustomEditTextStyle"
                 android:layout_marginTop="10dp"
                 android:hint="Введите содержание"
-                android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/postDetailsContentsLabel"
                 tools:layout_editor_absoluteY="20dp" />
 
             <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/signUpButton"
+                android:id="@+id/createPostButton"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="20sp"
+                android:layout_marginTop="40sp"
                 android:background="@drawable/log_in_button_background"
-                android:text="Зарегистрироваться"
+                android:text="Сохранить публикацию"
                 android:textColor="@color/white"
                 app:layout_constraintTop_toBottomOf="@id/postDetailsContentsInput"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -6,11 +6,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/accountGoBackButton"
-        style="@style/GoBackButton"
+    <androidx.appcompat.widget.AppCompatButton
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:id="@+id/accountSaveChangesButton"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/log_in_button_background"
+        android:text="Сохранить изменения"
+        android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/accountImage" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/accountImage"
@@ -19,7 +27,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginTop="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/accountGoBackButton" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/accountEditNickname"
@@ -28,6 +36,7 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:background="@drawable/edit_text_background"
+        android:maxLines="1"
         android:hint="Введите свое имя"
         android:paddingHorizontal="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,7 +60,7 @@
         android:layout_marginTop="20dp"
         app:layout_constraintEnd_toEndOf="@+id/accountEmailText"
         app:layout_constraintStart_toStartOf="@+id/accountImage"
-        app:layout_constraintTop_toBottomOf="@id/accountImage" />
+        app:layout_constraintTop_toBottomOf="@id/accountSaveChangesButton" />
 
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/publicationsViewPager"

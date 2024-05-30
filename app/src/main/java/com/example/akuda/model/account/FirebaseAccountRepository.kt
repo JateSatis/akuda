@@ -1,5 +1,6 @@
 package com.example.akuda.model.account
 
+import android.util.Log
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.tasks.await
@@ -13,7 +14,8 @@ class FirebaseAccountRepository {
         return try {
             val documentSnapshot = db.collection("users").document(userId).get().await()
             if (documentSnapshot.exists()) {
-                documentSnapshot.toObject(Account::class.java)
+                val account = documentSnapshot.toObject(Account::class.java)
+                account
             } else {
                 null
             }
