@@ -4,7 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.example.akuda.screens.account.AccountFragment"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background_blue">
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/logOutButton"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="20dp"
+        android:background="@drawable/edit_text_background"
+        android:text="Выйти"
+        android:textColor="@color/background_blue"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/accountImage" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:visibility="gone"
@@ -17,7 +30,7 @@
         android:background="@drawable/log_in_button_background"
         android:text="Сохранить изменения"
         android:textColor="@color/white"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/logOutButton"
         app:layout_constraintTop_toBottomOf="@+id/accountImage" />
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -47,6 +60,7 @@
         android:id="@+id/accountEmailText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textColor="@color/background_light_gray"
         app:layout_constraintBottom_toBottomOf="@+id/accountImage"
         app:layout_constraintEnd_toEndOf="@+id/accountEditNickname"
         app:layout_constraintStart_toStartOf="@+id/accountEditNickname"
@@ -57,10 +71,11 @@
         android:id="@+id/tabLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="10dp"
         app:tabIndicatorColor="@color/orange"
         app:tabSelectedTextColor="@color/orange"
-        app:layout_constraintTop_toBottomOf="@+id/accountImage"
+        android:background="@color/background_blue"
+        app:layout_constraintTop_toBottomOf="@+id/accountSaveChangesButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 

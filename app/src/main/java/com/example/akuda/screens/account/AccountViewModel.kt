@@ -8,9 +8,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.akuda.model.account.Account
 import com.example.akuda.model.account.FirebaseAccountRepository
+import com.example.akuda.model.auth.FirebaseAuthRepository
 import kotlinx.coroutines.launch
 
-class AccountViewModel(private val accountRepository: FirebaseAccountRepository) : ViewModel() {
+class AccountViewModel(
+    private val accountRepository: FirebaseAccountRepository,
+    private val authRepository: FirebaseAuthRepository
+) : ViewModel() {
 
     private val _account: MutableLiveData<Account?> = MutableLiveData()
     val account: MutableLiveData<Account?>
@@ -51,5 +55,9 @@ class AccountViewModel(private val accountRepository: FirebaseAccountRepository)
                 _photoUpdateSuccess.postValue(false)
             }
         }
+    }
+
+    fun signOut() {
+        authRepository.signOut()
     }
 }

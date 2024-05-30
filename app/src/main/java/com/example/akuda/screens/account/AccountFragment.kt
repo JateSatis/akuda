@@ -10,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import androidx.fragment.app.Fragment
+import androidx.navigation.findNavController
 import com.bumptech.glide.Glide
+import com.example.akuda.R
 import com.example.akuda.Repositories
 import com.example.akuda.databinding.FragmentAccountBinding
 import com.google.android.material.tabs.TabLayout
@@ -22,7 +24,12 @@ class AccountFragment : Fragment() {
     private lateinit var binding: FragmentAccountBinding
     private lateinit var pagerAdapter: PostsPagerAdapter
 
-    private var accountViewModel = AccountViewModel(Repositories.firebaseAccountRepository)
+    private var accountViewModel = AccountViewModel(
+        Repositories.firebaseAccountRepository,
+        Repositories.firebaseAuthRepository
+    )
+
+    private var imageUri: Uri? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -30,6 +37,16 @@ class AccountFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentAccountBinding.inflate(inflater, container, false)
+
+        Glide.with(this)
+            .load(R.mipmap.account_default)
+            .circleCrop()
+            .into(binding.accountImage)
+
+        binding.accountEditNickname.setOnEditorActionListener { _, _, _ ->
+            binding.accountSaveChangesButton.visibility = View.VISIBLE
+            return@setOnEditorActionListener true
+        }
 
         accountViewModel.fetchAccountInfo()
 
@@ -53,16 +70,19 @@ class AccountFragment : Fragment() {
             }
         }.attach()
 
-        binding.accountEditNickname.setOnEditorActionListener { nicknameView, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                accountViewModel.updateAccountNickname(nicknameView.text.toString())
-                return@setOnEditorActionListener true
-            }
-            return@setOnEditorActionListener false
-        }
-
         binding.accountImage.setOnClickListener {
             openGalleryForAccountPhoto()
+        }
+
+        binding.accountSaveChangesButton.setOnClickListener {
+            if (imageUri != null) accountViewModel.updateAccountPhoto(imageUri!!)
+            accountViewModel.updateAccountNickname(binding.accountEditNickname.text.toString())
+        }
+
+        binding.logOutButton.setOnClickListener {
+            accountViewModel.signOut()
+            val topNavController = activity?.findNavController(R.id.mainGraphContainer)
+            topNavController?.navigate(R.id.signInFragment)
         }
 
         return binding.root
@@ -79,7 +99,7 @@ class AccountFragment : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == Activity.RESULT_OK && data != null && data.data != null) {
             val imageUri = data.data
-            accountViewModel.updateAccountPhoto(imageUri!!)
+            this@AccountFragment.imageUri = imageUri!!
             Glide.with(this@AccountFragment)
                 .load(imageUri)
                 .circleCrop()
