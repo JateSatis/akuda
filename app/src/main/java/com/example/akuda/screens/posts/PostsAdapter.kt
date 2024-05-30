@@ -1,6 +1,7 @@
 package com.example.akuda.screens.posts
 
 import android.annotation.SuppressLint
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,7 @@ class PostsAdapter(
     var posts = emptyList<Post>()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
+            Log.d("RRRR", value.toString())
             field = value
             notifyDataSetChanged()
         }

@@ -60,6 +60,7 @@ class SignInFragment : Fragment() {
         if (viewModel.isSignedIn()) {
             findNavController().navigate(R.id.action_signInFragment_to_tabsFragment)
         }
+
     }
 
     private fun updatePending() {

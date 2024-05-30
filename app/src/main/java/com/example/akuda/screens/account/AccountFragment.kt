@@ -64,7 +64,7 @@ class AccountFragment : Fragment() {
         ) { tab: TabLayout.Tab, position: Int ->
             when (position) {
                 0 -> tab.text = "Мои публикации"
-                1 -> tab.text = "Понравившиеся публикации"
+                1 -> tab.text = "Понравившиеся\nпубликации"
             }
         }.attach()
 

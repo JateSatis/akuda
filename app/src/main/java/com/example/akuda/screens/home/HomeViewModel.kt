@@ -11,19 +11,19 @@ class HomeViewModel(
     private val postsRepository: FirebasePostsRepository
 ) : ViewModel() {
 
-    private val _posts = MutableLiveData<List<Post>>()
+    private val _posts = MutableLiveData<List<Post>?>()
     val posts = _posts
 
     init {
         viewModelScope.launch {
-            _posts.value = postsRepository.fetchAllPosts()
+            _posts.postValue(postsRepository.fetchAllPosts())
         }
     }
 
 
     fun fetchPostsByCity(city: String) {
         viewModelScope.launch {
-            _posts.value = postsRepository.fetchPostsByCity(city)
+            _posts.postValue(postsRepository.fetchPostsByCity(city))
         }
     }
 
