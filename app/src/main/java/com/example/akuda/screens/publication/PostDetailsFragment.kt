@@ -5,18 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.akuda.databinding.FragmentPublicationBinding
+import com.example.akuda.databinding.FragmentPostDetailsBinding
 
-class PublicationFragment : Fragment() {
+class PostDetailsFragment : Fragment() {
 
-    private lateinit var binding: FragmentPublicationBinding
+    private lateinit var binding: FragmentPostDetailsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentPublicationBinding.inflate(inflater, container, false)
+    ): View {
+        binding = FragmentPostDetailsBinding.inflate(inflater, container, false)
 
         return binding.root;
     }

@@ -12,7 +12,7 @@
         android:background="@color/background_blue">
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/signUpGoBackButton"
+            android:id="@+id/postDetailsGoBackButton"
             style="@style/GoBackButton"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -28,7 +28,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/signUpGoBackButton" />
+            app:layout_constraintTop_toBottomOf="@id/postDetailsGoBackButton" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
@@ -42,98 +42,84 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/createPostTitle">
 
-            <TextView
-                android:id="@+id/signUpNameLable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Имя"
-                android:textSize="20sp"
+            <ImageView
+                android:id="@+id/postDetailsPhoto"
+                android:layout_width="0dp"
+                android:layout_height="200dp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <EditText
-                android:id="@+id/signUpNameInput"
-                style="@style/CustomEditTextStyle"
-                android:layout_marginTop="10dp"
-                android:hint="Введите имя"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signUpNameLable" />
-
             <TextView
-                android:id="@+id/signUpEmailLable"
+                android:id="@+id/postDetailsTitleLable"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Почта"
+                android:text="Название публикации"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signUpNameInput" />
+                app:layout_constraintTop_toBottomOf="@id/postDetailsPhoto" />
 
             <EditText
-                android:id="@+id/signUpEmailInput"
+                android:id="@+id/postDetailsTitleInput"
                 style="@style/CustomEditTextStyle"
                 android:layout_marginTop="10dp"
-                android:hint="Введите почту"
+                android:hint="Введите название"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signUpEmailLable" />
+                app:layout_constraintTop_toBottomOf="@id/postDetailsTitleLable" />
 
             <TextView
-                android:id="@+id/signUpPasswordLable"
+                android:id="@+id/postDetailsСityLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Пароль"
+                android:text="Город"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signUpEmailInput" />
+                app:layout_constraintTop_toBottomOf="@id/postDetailsTitleInput" />
 
             <EditText
-                android:id="@+id/signUpPasswordInput"
+                android:id="@+id/postDetailsCityInput"
                 style="@style/CustomEditTextStyle"
                 android:layout_marginTop="10dp"
-                android:drawableRight="@drawable/ic_show_password"
-                android:hint="Введите пароль"
+                android:hint="Введите город"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/postDetailsСityLabel" />
+
+            <TextView
+                android:id="@+id/postDetailsContentsLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Содержание"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/postDetailsCityInput" />
+
+            <EditText
+                android:id="@+id/postDetailsContentsInput"
+                style="@style/CustomEditTextStyle"
+                android:layout_marginTop="10dp"
+                android:hint="Введите содержание"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signUpPasswordLable"
-                tools:layout_editor_absoluteY="20dp" />
-
-            <TextView
-                android:id="@+id/signUpRePasswordLable"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Повторите пароль"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signUpPasswordInput" />
-
-            <EditText
-                android:id="@+id/signUpRePasswordInput"
-                style="@style/CustomEditTextStyle"
-                android:layout_marginTop="10dp"
-                android:drawableRight="@drawable/ic_show_password"
-                android:hint="Повторите пароль"
-                android:inputType="textPassword"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/signUpRePasswordLable"
+                app:layout_constraintTop_toBottomOf="@id/postDetailsContentsLabel"
                 tools:layout_editor_absoluteY="20dp" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/signUpButton"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
+                android:layout_marginTop="20sp"
                 android:background="@drawable/log_in_button_background"
                 android:text="Зарегистрироваться"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/postDetailsContentsInput"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/signUpRePasswordInput" />
+                app:layout_constraintStart_toStartOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
