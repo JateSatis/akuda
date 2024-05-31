@@ -46,7 +46,8 @@ class PostsFragment : Fragment() {
 
     private fun observePosts() {
         viewModel.posts.observe(viewLifecycleOwner) { posts ->
-            posts?.let { postsAdapter.posts = it }
+            posts?.let { postsAdapter.posts = it.toMutableList() }
+            //"toMutableList" сделан для поиска
         }
     }
 

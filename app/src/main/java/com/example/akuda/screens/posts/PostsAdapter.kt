@@ -9,16 +9,21 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.akuda.databinding.ItemPostBinding
 import com.example.akuda.model.posts.Post
+import java.util.Locale
 
 class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostHolder>() {
 
-    var posts = emptyList<Post>()
+    var posts = mutableListOf<Post>()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
-            Log.d("RRRR", value.toString())
             field = value
+            postsCopy.clear();
+            postsCopy.addAll(value)
             notifyDataSetChanged()
         }
+
+
+    private var postsCopy = mutableListOf<Post>()
 
     inner class PostHolder(val binding: ItemPostBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -30,7 +35,6 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostHolder>() {
     }
 
     override fun onBindViewHolder(holder: PostHolder, position: Int) {
-        //val binging = holder.binding
         val post = posts[position]
 
         Log.d("RRRR", post.toString())
@@ -47,23 +51,25 @@ class PostsAdapter : RecyclerView.Adapter<PostsAdapter.PostHolder>() {
             .load(post.image)
             .transform(RoundedCorners(20))
             .into(holder.binding.postImage)
-
-        /*binging.apply {
-            postTitle.text = post.title
-            postAuthor.text = post.author
-            postCity.text = post.city
-            postRating.text = (post.rating.sum() / post.rating.size).toString()
-        }
-
-        Glide
-            .with(holder.itemView)
-            .load(post.image)
-            .transform(RoundedCorners(20))
-            .into(binging.postImage)*/
     }
 
     override fun getItemCount(): Int = posts.size
 
+    fun filterByCity(query: String) {
+        val filteredGroups: MutableList<Post> = mutableListOf()
 
-
+        if (query.isEmpty()) {
+            filteredGroups.addAll(postsCopy)
+        } else {
+            val lowerCaseQuery = query.lowercase(Locale.getDefault())
+            for (post in postsCopy) {
+                if (post.city.lowercase(Locale.ROOT).contains(lowerCaseQuery)) {
+                    filteredGroups.add(post)
+                }
+            }
+        }
+        posts.clear()
+        posts.addAll(filteredGroups)
+        notifyDataSetChanged()
+    }
 }
