@@ -25,6 +25,8 @@ class FirebaseAccountRepository {
         }
     }
 
+    fun getCurrentUserId() = userId
+
     suspend fun saveAccountPhoto(photo: String): Boolean {
         return try {
             db.collection("users").document(userId!!).update("photo", photo).await()

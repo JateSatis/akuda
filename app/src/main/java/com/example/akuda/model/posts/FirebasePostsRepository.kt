@@ -1,6 +1,7 @@
 package com.example.akuda.model.posts
 
 import android.util.Log
+import com.example.akuda.Repositories
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FieldValue
 import com.google.firebase.firestore.FirebaseFirestore
@@ -66,11 +67,15 @@ class FirebasePostsRepository {
     }
 
     suspend fun addPost(city: String, title: String, contents: String, imageUri: String) {
+
+        val accountInfo = Repositories.firebaseAccountRepository.fetchAccountInfo()
+
         val post = Post(
             city = city,
             title = title,
             contents = contents,
             author = userId!!,
+            authorName = accountInfo?.nickname!!,
             liked = emptyList(),
             rating = emptyList(),
             image = imageUri
@@ -91,6 +96,14 @@ class FirebasePostsRepository {
             e.printStackTrace()
         }
     }
+    suspend fun dislikePost(id: String) {
+        try {
+            db.collection("posts").document(id).update("liked", FieldValue.arrayRemove(userId)).await()
+        } catch (e: Exception) {
+            e.printStackTrace()
+        }
+    }
+
 
     suspend fun ratePost(id: String, rating: Int) {
         try {

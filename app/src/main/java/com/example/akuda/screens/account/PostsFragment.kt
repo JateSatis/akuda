@@ -57,6 +57,11 @@ class PostsFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        observePosts()
+    }
+
     private fun observePosts() {
         viewModel.posts.observe(viewLifecycleOwner) { posts ->
             posts?.let { postsAdapter.posts = it }
@@ -83,4 +88,5 @@ class PostsFragment : Fragment() {
             return fragment
         }
     }
+
 }

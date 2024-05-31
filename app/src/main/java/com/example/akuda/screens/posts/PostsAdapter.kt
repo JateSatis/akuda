@@ -21,7 +21,6 @@ class PostsAdapter(
     var posts = emptyList<Post>()
         @SuppressLint("NotifyDataSetChanged")
         set(value) {
-            Log.d("RRRR", value.toString())
             field = value
             notifyDataSetChanged()
         }
@@ -45,7 +44,7 @@ class PostsAdapter(
 
         binging.apply {
             postTitle.text = post.title
-            postAuthor.text = post.author
+            postAuthor.text = post.authorName
             postCity.text = post.city
             postRating.text = (post.rating.sum() / post.rating.size).toString()
         }
